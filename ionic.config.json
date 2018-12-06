@@ -1,0 +1,7 @@
+{
+  "name": "Bud",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
