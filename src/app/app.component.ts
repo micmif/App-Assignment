@@ -23,7 +23,7 @@ export class MyApp {
       { title: 'Home', component: 'home' },
       { title: 'List', component: ListPage },
       { title: 'Profile', component: 'profile' },
-      { title: 'Calendar', component: 'calendar' }
+      { title: 'CalendarPop', component: 'calendar-pop' }
     ];
 
   }
