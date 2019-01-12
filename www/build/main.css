@@ -27968,11 +27968,54 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
-page-calendar ion-navbar {
-  color: red;
-}
-
 page-calendar ion-title {
   position: relative;
   text-align: center;
+}
+
+page-event-modal button ion-button {
+  color: green;
+}
+
+page-home .header-image {
+  background-image: url(https://ununsplash.imgix.net/photo-1421091242698-34f6ad7fc088?fit=crop&fm=jpg&h=650&q=75&w=950);
+  height: 40vh;
+}
+
+page-home .main-content {
+  background-color: #222;
+  -webkit-box-shadow: 0px -1px 13px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px -1px 13px 1px rgba(0, 0, 0, 0.3);
+}
+
+page-home ion-content {
+  padding-top: 5 !important;
+}
+
+page-home ion-header {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+page-home ion-navbar {
+  opacity: 0.4;
+  -webkit-box-shadow: 0px 1px 13px 1px rgba(0, 0, 0, 0.77);
+  box-shadow: 0px 1px 13px 1px rgba(0, 0, 0, 0.77);
+}
+
+page-home ion-card {
+  background-color: #fff;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 25px;
+  position: relative;
+  top: -30px;
+}
+
+page-home ion-card:last-of-type {
+  margin-bottom: 0 !important;
+}
+
+page-home ion-item {
+  background-color: #fff;
 }
