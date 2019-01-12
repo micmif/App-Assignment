@@ -1,16 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 407:
+/***/ 282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarPopPageModule", function() { return CalendarPopPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventModalPageModule", function() { return EventModalPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendar_pop__ = __webpack_require__(411);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mobiscroll_angular__ = __webpack_require__(351);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__event_modal__ = __webpack_require__(409);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,37 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
-var CalendarPopPageModule = /** @class */ (function () {
-    function CalendarPopPageModule() {
+var EventModalPageModule = /** @class */ (function () {
+    function EventModalPageModule() {
     }
-    CalendarPopPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+    EventModalPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__calendar_pop__["a" /* CalendarPopPage */],
+                __WEBPACK_IMPORTED_MODULE_2__event_modal__["a" /* EventModalPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["IonicPageModule"].forChild(__WEBPACK_IMPORTED_MODULE_2__calendar_pop__["a" /* CalendarPopPage */]),
-                __WEBPACK_IMPORTED_MODULE_3__mobiscroll_angular__["a" /* MbscModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_forms__["FormsModule"] // add the forms module
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__event_modal__["a" /* EventModalPage */]),
             ],
         })
-    ], CalendarPopPageModule);
-    return CalendarPopPageModule;
+    ], EventModalPageModule);
+    return EventModalPageModule;
 }());
 
-//# sourceMappingURL=calendar-pop.module.js.map
+//# sourceMappingURL=event-modal.module.js.map
 
 /***/ }),
 
-/***/ 411:
+/***/ 409:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarPopPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventModalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,33 +56,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-//let now = new Date();
-var CalendarPopPage = /** @class */ (function () {
-    // Place the code below into your own component or use the full template
-    function CalendarPopPage(navCtrl, navParams) {
+/**
+ * Generated class for the EventModalPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var EventModalPage = /** @class */ (function () {
+    function EventModalPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.events = [{}];
-        this.eventSettings = {
-            theme: 'ios',
-            display: 'inline',
-            view: {
-                calendar: { type: 'month' },
-                eventList: { type: 'month' }
-            }
-        };
     }
-    CalendarPopPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-calendar-pop',template:/*ion-inline-start:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/calendar-pop/calendar-pop.html"*/'<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n  <ion-title>Calendar</ion-title>\n</ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <mbsc-eventcalendar [data]="events" [options]="eventSettings"></mbsc-eventcalendar>\n</ion-content>\n'/*ion-inline-end:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/calendar-pop/calendar-pop.html"*/
+    EventModalPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad EventModalPage');
+    };
+    EventModalPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-event-modal',template:/*ion-inline-start:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/event-modal/event-modal.html"*/'<!--\n  Generated template for the EventModalPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>eventModal</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/event-modal/event-modal.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavController"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["NavParams"]) === "function" && _b || Object])
-    ], CalendarPopPage);
-    return CalendarPopPage;
-    var _a, _b;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+    ], EventModalPage);
+    return EventModalPage;
 }());
 
-//# sourceMappingURL=calendar-pop.js.map
+//# sourceMappingURL=event-modal.js.map
 
 /***/ })
 
