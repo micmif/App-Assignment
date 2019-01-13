@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../providers/user-service/user-service';
 
@@ -23,17 +23,20 @@ export class LoginPage
 
 
   constructor(
+    public alertCtrl: AlertController,
     public formBuilder: FormBuilder,
-    public navCtrl: NavController, 
+    public loadCtrl: LoadingController,
+    public navCtrl: NavController,
     public navParams: NavParams,
     private userService: UserService)
     {
-      this.loginGroup = this.formBuilder.group({
-        // the email field is required
-        email: ['', Validators.required],
+      // this command will set up the form validation.
+    this.loginGroup = this.formBuilder.group({
+      // the email field is required.
+      email: ['', Validators.required],
 
-        // the password field is requred 
-        password: ['', Validators.required]
+      // the password field is required.
+      password: ['', Validators.required]
       });
     } 
 
@@ -49,19 +52,35 @@ export class LoginPage
         return;
       }
 
-      // Observable functiions will only start their code if we write subscribe()
-      this.userService.login(this.loginGroup.value).subscribe(
-        // We are successful, do the rest
-        data => {
-          console.log("We are successful!");
-          console.log(data);
-        },
+    
+    // Create and show a loading interface.
+    const loader = this.loadCtrl.create({
+      content: 'Logging in...'
+    });
+    loader.present();
 
-      // We have an error, handle it
-        error => {
-          console.log("We have failed!");
-          console.log(error);
-        }
-      );
-    }
+    // Observable functions will only start their code
+    // if we write subscribe().
+    this.userService.login(this.loginGroup.value).subscribe(
+      // we are successful, do the rest.
+      data => {
+        loader.dismiss();
+        this.userService.storeUser(data.userdata);
+        this.navCtrl.setRoot('home', {}, { animate: true });
+      },
+      
+      // we have an error, handle it.
+      error => {
+        loader.dismiss();
+
+        // if the website didn't log us in, show an alert.
+        const alert = this.alertCtrl.create({
+          title: 'Login Error',
+          subTitle: error.message,
+          buttons: [ 'OK' ]
+        });
+        alert.present();
+      }
+    );
+  }
 }

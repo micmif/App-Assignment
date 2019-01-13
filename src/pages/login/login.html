@@ -1,5 +1,4 @@
 <ion-content padding>
-
   <h1>Login</h1>
 
   <form [formGroup]="loginGroup">
@@ -8,10 +7,9 @@
         <ion-label floating>Email</ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
-
       <ion-item class="error"
         *ngIf="!loginGroup.get('email').valid &&
-        (loginGroup.get('email').dirty || submitAttempt)"> 
+          (loginGroup.get('email').dirty || submitAttempt)">
         <small>Please enter a valid email.</small>
       </ion-item>
 
@@ -19,17 +17,15 @@
         <ion-label floating>Password</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
-
       <ion-item class="error"
         *ngIf="!loginGroup.get('password').valid &&
-        (loginGroup.get('password').dirty || submitAttempt)"> 
-        <small>Please enter a valid password.</small>
+          (loginGroup.get('password').dirty || submitAttempt)">
+        <small>Please enter your password.</small>
       </ion-item>
     </ion-list>
-  </form> 
+  </form>
 
   <div padding>
     <button ion-button block (click)="login()">Login</button>
   </div>
-
 </ion-content>
