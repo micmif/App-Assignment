@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 688:
+/***/ 691:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(820);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(824);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var HomePageModule = /** @class */ (function () {
-    function HomePageModule() {
+var LoginPageModule = /** @class */ (function () {
+    function LoginPageModule() {
     }
-    HomePageModule = __decorate([
+    LoginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
             ],
         })
-    ], HomePageModule);
-    return HomePageModule;
+    ], LoginPageModule);
+    return LoginPageModule;
 }());
 
-//# sourceMappingURL=home.module.js.map
+//# sourceMappingURL=login.module.js.map
 
 /***/ }),
 
-/***/ 820:
+/***/ 824:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_user_service_user_service__ = __webpack_require__(348);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,22 +58,84 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var HomePage = /** @class */ (function () {
-    function HomePage(navCtrl) {
+
+
+var LoginPage = /** @class */ (function () {
+    function LoginPage(alertCtrl, formBuilder, loadCtrl, navCtrl, modalCtrl, navParams, userService) {
+        this.alertCtrl = alertCtrl;
+        this.formBuilder = formBuilder;
+        this.loadCtrl = loadCtrl;
         this.navCtrl = navCtrl;
-        this.category = 'gear';
-        this.cards = new Array(10);
+        this.modalCtrl = modalCtrl;
+        this.navParams = navParams;
+        this.userService = userService;
+        // The submit attempt for the user will start off as false
+        // and we'll switch it on button press.
+        this.submitAttempt = false;
+        // this command will set up the form validation.
+        this.loginGroup = this.formBuilder.group({
+            // the email field is required.
+            email: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required],
+            // the password field is required.
+            password: ['', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["f" /* Validators */].required]
+        });
     }
-    HomePage = __decorate([
+    // processes and sends the login request.
+    LoginPage.prototype.login = function () {
+        var _this = this;
+        // first, make a submit attempt
+        this.submitAttempt = true;
+        // if the form doesn't validate, stop the function
+        if (!this.loginGroup.valid) {
+            return;
+        }
+        // Create and show a loading interface.
+        var loader = this.loadCtrl.create({
+            content: 'Logging in...'
+        });
+        loader.present();
+        // Observable functions will only start their code
+        // if we write subscribe().
+        this.userService.login(this.loginGroup.value).subscribe(
+        // we are successful, do the rest.
+        function (data) {
+            loader.dismiss();
+            _this.userService.storeUser(data.userdata);
+            _this.navCtrl.setRoot('home', {}, { animate: true });
+        }, 
+        // we have an error, handle it.
+        function (error) {
+            loader.dismiss();
+            // if the website didn't log us in, show an alert.
+            var alert = _this.alertCtrl.create({
+                title: 'Login Error',
+                subTitle: error.message,
+                buttons: ['OK']
+            });
+            alert.present();
+        });
+    };
+    LoginPage.prototype.registration = function () {
+        var modal = this.modalCtrl.create('registration');
+        modal.present();
+    };
+    LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/home/home.html"*/'<ion-header no-border>\n  <ion-navbar color="header">\n      <button ion-button menuToggle>\n          <ion-icon name="menu"></ion-icon>\n        </button>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content >\n  <ion-card>\n          <ion-item>\n              <ion-input type="number" placeholder="Create New Post"></ion-input>\n            </ion-item>\n  </ion-card>\n\n  <ion-buttons end>\n      <button ion-button round color="lg">Post</button>\n  </ion-buttons> \n\n  <ion-card>\n    <ion-item>\n      <ion-avatar item-start>\n        <img src="assets/img/marty-avatar.png">\n      </ion-avatar>\n      <h2>Marty McFly</h2>\n      <p>November 5, 1955</p>\n    </ion-item>\n  \n    <img src="assets/img/advance-card-bttf.png">\n  \n    <ion-card-content>\n      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>\n    </ion-card-content>\n  \n    <ion-row>\n      <ion-col>\n        <button ion-button color="lg" clear small icon-start>\n          <ion-icon name=\'thumbs-up\'></ion-icon>\n          12 Likes\n        </button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="lg" clear small icon-start>\n          <ion-icon name=\'text\'></ion-icon>\n          4 Comments\n        </button>\n      </ion-col>\n      <ion-col align-self-center text-center>\n        <ion-note>\n          11h ago\n        </ion-note>\n      </ion-col>\n    </ion-row>\n  \n  </ion-card>\n  \n  \n  <ion-card>\n  \n    <ion-item>\n      <ion-avatar item-start>\n        <img src="assets/img/sarah-avatar.png.jpeg">\n      </ion-avatar>\n      <h2>Sarah Connor</h2>\n      <p>May 12, 1984</p>\n    </ion-item>\n  \n    <img src="assets/img/advance-card-tmntr.jpg">\n  \n    <ion-card-content>\n      <p>I face the unknown future, with a sense of hope. Because if a machine, a Terminator, can learn the value of human life, maybe we can too.</p>\n    </ion-card-content>\n  \n    <ion-row>\n      <ion-col>\n        <button ion-button color="lg" clear small icon-start>\n          <ion-icon name=\'thumbs-up\'></ion-icon>\n          30 Likes\n        </button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="lg" clear small icon-start>\n          <ion-icon name=\'text\'></ion-icon>\n          64 Comments\n        </button>\n      </ion-col>\n      <ion-col align-self-center text-center>\n        <ion-note>\n          30yr ago\n        </ion-note>\n      </ion-col>\n    </ion-row>\n  \n  </ion-card>\n  \n  \n  <ion-card>\n  \n    <ion-item>\n      <ion-avatar item-start>\n        <img src="assets/img/ian-avatar.png">\n      </ion-avatar>\n      <h2>Dr. Ian Malcolm</h2>\n      <p>June 28, 1990</p>\n    </ion-item>\n  \n    <img src="assets/img/advance-card-jp.jpg">\n  \n    <ion-card-content>\n      <p>Your scientists were so preoccupied with whether or not they could, that they didn\'t stop to think if they should.</p>\n    </ion-card-content>\n  \n    <ion-row>\n      <ion-col>\n        <button ion-button color="lg" clear small icon-start>\n          <ion-icon name=\'thumbs-up\'></ion-icon>\n          46 Likes\n        </button>\n      </ion-col>\n      <ion-col>\n        <button ion-button color="lg" clear small icon-start>\n          <ion-icon name=\'text\'></ion-icon>\n          66 Comments\n        </button>\n      </ion-col>\n      <ion-col align-self-center text-center>\n        <ion-note>\n          2d ago\n        </ion-note>\n      </ion-col>\n    </ion-row>\n  \n  </ion-card>\n  \n</ion-content>\n\n'/*ion-inline-end:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/home/home.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/login/login.html"*/'<ion-content padding>\n  <h1>Login to Bud</h1>\n\n  <form [formGroup]="loginGroup">\n    <ion-list>\n      <ion-item>\n        <ion-label floating>Email</ion-label>\n        <ion-input type="email" formControlName="email"></ion-input>\n      </ion-item>\n      <ion-item class="error"\n        *ngIf="!loginGroup.get(\'email\').valid &&\n          (loginGroup.get(\'email\').dirty || submitAttempt)">\n        <small>Please enter a valid email.</small>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>Password</ion-label>\n        <ion-input type="password" formControlName="password"></ion-input>\n      </ion-item>\n      <ion-item class="error"\n        *ngIf="!loginGroup.get(\'password\').valid &&\n          (loginGroup.get(\'password\').dirty || submitAttempt)">\n        <small>Please enter your password.</small>\n      </ion-item>\n    </ion-list>\n  </form>\n\n  <div padding>\n    <button ion-button block color="lg" (click)="login()">Login</button>\n  </div>\n\n  <div padding>\n      <button ion-button block color="lg" (click)="registration()"> Register </button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/login/login.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_3__providers_user_service_user_service__["a" /* UserService */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
-    ], HomePage);
-    return HomePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_user_service_user_service__["a" /* UserService */]])
+    ], LoginPage);
+    return LoginPage;
 }());
 
-//# sourceMappingURL=home.js.map
+//# sourceMappingURL=login.js.map
 
 /***/ })
 

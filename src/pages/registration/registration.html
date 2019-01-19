@@ -1,0 +1,71 @@
+<ion-header>
+
+    <ion-navbar color="header">
+      <ion-buttons left>
+        <button margin-horizontal ion-button (click)="cancel()">
+          <ion-icon name='arrow-back'></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>Sign Up</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <form [formGroup]="registerGroup">
+        <ion-list>
+          <ion-item>
+            <ion-label floating> Email </ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+
+          <!-- if email is  left out, this error will pop up-->
+          <ion-item class="error"
+            *ngIf="!registerGroup.get('email').valid &&
+            (registerGroup.get('email').dirty || submitAttempt)">
+            <small>Please enter a valid email.</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating> Password </ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
+
+          <!-- if password is left out, this error will pop up-->
+          <ion-item class="error"
+          *ngIf="!registerGroup.get('password').valid &&
+            (registerGroup.get('password').dirty || submitAttempt)">
+            <small>Please enter a valid password.</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating> First Name </ion-label>
+            <ion-input type="name" formControlName="name"></ion-input>
+           </ion-item>
+            <!-- if name is entered incorrectly or left out, this error will pop up-->
+          <ion-item class="error"
+            *ngIf="!registerGroup.get('name').valid &&
+            (registerGroup.get('name').dirty || submitAttempt)">
+            <small>Please enter a valid Name.</small>
+          </ion-item>
+
+            <ion-item>
+              <ion-label floating> Surname </ion-label>
+              <ion-input type="surname" formControlName="surname"></ion-input>
+            </ion-item>
+
+            <!-- if surname is entered incorrectly or left out, this error will pop up-->
+          <ion-item class="error"
+            *ngIf="!registerGroup.get('surname').valid &&
+            (registerGroup.get('surname').dirty || submitAttempt)">
+            <small>Please enter a valid Surname.</small>
+          </ion-item>
+        </ion-list>
+
+      </form>
+  
+      <div padding>
+          <button ion-button block color="lg" (click)="registerUser()"> Register </button>
+        </div>
+  </ion-content>

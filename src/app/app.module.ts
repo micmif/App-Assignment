@@ -9,6 +9,8 @@ import { NgCalendarModule } from 'ionic2-calendar';
 import { UserService } from '../providers/user-service/user-service';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterServiceProvider } from '../providers/register/register-service';
+import { NotesServiceProvider } from '../providers/notes-service/notes-service';
 //import { CalendarPageModule } from '../pages/calendar/calendar.module';
 
 
@@ -34,7 +36,10 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService
+    UserService,
+    RegisterServiceProvider,
+    NotesServiceProvider,
+    NotesServiceProvider
   ]
 })
 export class AppModule {}

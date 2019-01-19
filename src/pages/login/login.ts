@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, ModalController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../providers/user-service/user-service';
 
@@ -27,6 +27,7 @@ export class LoginPage
     public formBuilder: FormBuilder,
     public loadCtrl: LoadingController,
     public navCtrl: NavController,
+    public modalCtrl: ModalController,
     public navParams: NavParams,
     private userService: UserService)
     {
@@ -82,5 +83,11 @@ export class LoginPage
         alert.present();
       }
     );
+  }
+
+  public registration(): void 
+  {
+    let modal = this.modalCtrl.create('registration');
+    modal.present();
   }
 }

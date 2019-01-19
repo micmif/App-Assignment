@@ -38,7 +38,7 @@ export class UserService
     public login(credentials: any): Observable<any>
     {
       // This link is the one that links to series-tracker ; have to link api.assignment
-      return this.http.post<any>('http://localhost/php/series-tracker/api/login.php',
+      return this.http.post<any>('http://assignment.local/api/login.php',
       credentials
       ).pipe(
         catchError(error => { return Observable.throw(error);})
