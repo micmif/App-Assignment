@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 693:
+/***/ 694:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegistrationPageModule", function() { return RegistrationPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__registration__ = __webpack_require__(826);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__registration__ = __webpack_require__(827);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var RegistrationPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 826:
+/***/ 827:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -122,10 +122,15 @@ var RegistrationPage = /** @class */ (function () {
             selector: 'page-register',template:/*ion-inline-start:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/registration/registration.html"*/'<ion-header>\n\n    <ion-navbar color="header">\n      <ion-buttons left>\n        <button margin-horizontal ion-button (click)="cancel()">\n          <ion-icon name=\'arrow-back\'></ion-icon>\n        </button>\n      </ion-buttons>\n      <ion-title>Sign Up</ion-title>\n    </ion-navbar>\n  \n  </ion-header>\n  \n  \n  <ion-content padding>\n    <form [formGroup]="registerGroup">\n        <ion-list>\n          <ion-item>\n            <ion-label floating> Email </ion-label>\n            <ion-input type="email" formControlName="email"></ion-input>\n          </ion-item>\n\n          <!-- if email is  left out, this error will pop up-->\n          <ion-item class="error"\n            *ngIf="!registerGroup.get(\'email\').valid &&\n            (registerGroup.get(\'email\').dirty || submitAttempt)">\n            <small>Please enter a valid email.</small>\n          </ion-item>\n\n          <ion-item>\n            <ion-label floating> Password </ion-label>\n            <ion-input type="password" formControlName="password"></ion-input>\n          </ion-item>\n\n          <!-- if password is left out, this error will pop up-->\n          <ion-item class="error"\n          *ngIf="!registerGroup.get(\'password\').valid &&\n            (registerGroup.get(\'password\').dirty || submitAttempt)">\n            <small>Please enter a valid password.</small>\n          </ion-item>\n\n          <ion-item>\n            <ion-label floating> First Name </ion-label>\n            <ion-input type="name" formControlName="name"></ion-input>\n           </ion-item>\n            <!-- if name is entered incorrectly or left out, this error will pop up-->\n          <ion-item class="error"\n            *ngIf="!registerGroup.get(\'name\').valid &&\n            (registerGroup.get(\'name\').dirty || submitAttempt)">\n            <small>Please enter a valid Name.</small>\n          </ion-item>\n\n            <ion-item>\n              <ion-label floating> Surname </ion-label>\n              <ion-input type="surname" formControlName="surname"></ion-input>\n            </ion-item>\n\n            <!-- if surname is entered incorrectly or left out, this error will pop up-->\n          <ion-item class="error"\n            *ngIf="!registerGroup.get(\'surname\').valid &&\n            (registerGroup.get(\'surname\').dirty || submitAttempt)">\n            <small>Please enter a valid Surname.</small>\n          </ion-item>\n        </ion-list>\n\n      </form>\n  \n      <div padding>\n          <button ion-button block color="lg" (click)="registerUser()"> Register </button>\n        </div>\n  </ion-content>'/*ion-inline-end:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/pages/registration/registration.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_3__providers_register_register_service__["a" /* RegisterServiceProvider */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_3__providers_register_register_service__["a" /* RegisterServiceProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_register_register_service__["a" /* RegisterServiceProvider */]) === "function" && _g || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormBuilder */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_register_register_service__["a" /* RegisterServiceProvider */]])
     ], RegistrationPage);
     return RegistrationPage;
-    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=registration.js.map
