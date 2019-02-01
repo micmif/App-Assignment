@@ -16,7 +16,6 @@ export class RegisterServiceProvider {
     this.storage.clear();
   }
 
-  // Retrieves the user's information to be sent to the server.
   public getUser(): Promise<any>
   {
     const promises = [];
@@ -36,11 +35,10 @@ export class RegisterServiceProvider {
 
   public registerUser(credentials: any): Observable<any>
   {
-    // Will send information to the website for validation
     return this.http.post<any>(
 
-      // Connects with our API
-      "http://assignment.local/register.php", 
+      // Connects with the API
+      "http://assignment.local/api/register.php", 
       credentials
       ).pipe(
         catchError (

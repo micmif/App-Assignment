@@ -37,7 +37,7 @@ export class UserService
 // Observables are structures that are capable of waiting for a request/connection to finish.
     public login(credentials: any): Observable<any>
     {
-      // This link is the one that links to series-tracker ; have to link api.assignment
+      // This link is the one that links assignment.local/api
       return this.http.post<any>('http://assignment.local/api/login.php',
       credentials
       ).pipe(

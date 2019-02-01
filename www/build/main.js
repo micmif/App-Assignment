@@ -113,7 +113,7 @@ var UserService = /** @class */ (function () {
     };
     // Observables are structures that are capable of waiting for a request/connection to finish.
     UserService.prototype.login = function (credentials) {
-        // This link is the one that links to series-tracker ; have to link api.assignment
+        // This link is the one that links assignment.local/api
         return this.http.post('http://assignment.local/api/login.php', credentials).pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs__["Observable"].throw(error); }));
     };
     // Stores the information for a user on this app.
@@ -172,7 +172,6 @@ var RegisterServiceProvider = /** @class */ (function () {
     RegisterServiceProvider.prototype.clearUser = function () {
         this.storage.clear();
     };
-    // Retrieves the user's information to be sent to the server.
     RegisterServiceProvider.prototype.getUser = function () {
         var _this = this;
         var promises = [];
@@ -187,10 +186,9 @@ var RegisterServiceProvider = /** @class */ (function () {
         });
     };
     RegisterServiceProvider.prototype.registerUser = function (credentials) {
-        // Will send information to the website for validation
         return this.http.post(
-        // Connects with our API
-        "http://assignment.local/register.php", credentials).pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs__["Observable"].throw(error.error); }));
+        // Connects with the API
+        "http://assignment.local/api/register.php", credentials).pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["catchError"])(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs__["Observable"].throw(error.error); }));
     };
     RegisterServiceProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
@@ -363,7 +361,7 @@ var MyApp = /** @class */ (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Users/michelamifsud/Documents/GitHub/App-Assignment/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/michelamifsud/Documents/Assignments/GitHub/App-Assignment/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <ion-toolbar>\n      <ion-title>Menu</ion-title>\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        {{p.title}}\n      </button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/Users/michelamifsud/Documents/Assignments/GitHub/App-Assignment/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
